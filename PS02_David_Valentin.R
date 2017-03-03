@@ -54,7 +54,7 @@ kFoldValidation <- function(train) {
 leaveOneOut <- function(train) {
   
   #will hold all the scores and average them
-  scores_lloc <- rep(0, times = 5)
+  scores_lloc <- rep(0, times = nrow(train))
   
   #sample dataset
   pseudo_train <- train
@@ -70,15 +70,15 @@ leaveOneOut <- function(train) {
       mutate(Predictions= ifelse(Sex == "female", 1, 0)) %>% 
       mutate(Correct = ifelse(Predictions == Survived, 1,0)) 
     
-    scores_loocv[i] <- score_for_fold_loocv$Correct
+    scores_lloc[i] <- score_for_fold_loocv$Correct
   }
   
-  return(scores_loocv)
+  return(scores_lloc)
 }
 
-total_kFold_scores = mean(kFoldValidation(train))
+total_kFold_scores = kFoldValidation(train)
 
-total_lloc_scores = mean(leaveOneOut(train))
+total_lloc_scores = leaveOneOut(train)
 
 
 # You could overfit the model to the training data and continue 
