@@ -29,7 +29,7 @@ kFoldValidation <- function(train) {
   
   #looping to test pseudo train set 
   for (i in 1:5) {
-    if (i >= 4) {
+    if (i <= 4) {
       score_val = pseudo_train[i:5,] %>% 
         # Create new column of predictions:
         mutate(Survived_predicted = ifelse(Sex == "female", 1, 0)) %>% 
