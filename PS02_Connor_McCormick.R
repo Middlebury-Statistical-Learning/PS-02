@@ -98,7 +98,7 @@ kable(testpropright2)
 #fold3
 antifold3 <- clean %>%
   anti_join(fold3, by="PassengerId")
-predictsurive <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold3, family="binomial")
+predictsurive3 <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold3, family="binomial")
 fold3res <- fold3 %>%
   dplyr::select(PassengerId, Survived, Pclass, Name, female, Age, child, SibSp) %>%
   mutate(phat=predict(predictsurive, newdata = fold3, type = "response"))
@@ -113,7 +113,7 @@ kable(testpropright3)
 #fold4
 antifold4 <- clean %>%
   anti_join(fold4, by="PassengerId")
-predictsurive <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold4, family="binomial")
+predictsurive4 <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold4, family="binomial")
 fold4res <- fold4 %>%
   dplyr::select(PassengerId, Survived, Pclass, Name, female, Age, child, SibSp) %>%
   mutate(phat=predict(predictsurive, newdata = fold4, type = "response"))
@@ -128,7 +128,7 @@ kable(testpropright4)
 #fold5
 antifold5 <- clean %>%
   anti_join(fold5, by="PassengerId")
-predictsurive <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold5, family="binomial")
+predictsurive5 <- glm(Survived ~ female + Pclass + child + SibSp, data=antifold5, family="binomial")
 fold5res <- fold5 %>%
   dplyr::select(PassengerId, Survived, Pclass, Name, female, Age, child, SibSp) %>%
   mutate(phat=predict(predictsurive, newdata = fold5, type = "response"))
